@@ -1,3 +1,12 @@
 #!/usr/bin/env ruby
-my_regex = /hbt+n/
-puts ARGV[0].scan(my_regex).join
+sender_regex = /\[from:(.*?)\]/
+receiver_regex = /\[to:(.*?)\]/
+flags_regex = /\[flags:(.*?)\]/
+
+args = []
+
+args << ARGV[0].scan(sender_regex).join
+args << ARGV[0].scan(receiver_regex).join
+args << ARGV[0].scan(flags_regex).join
+
+puts args.join(",")
